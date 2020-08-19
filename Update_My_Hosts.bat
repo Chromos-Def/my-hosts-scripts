@@ -14,15 +14,15 @@ powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/Chromos
 echo.
 echo Updates are done downloading
 
-REM The following line copies only lines containing 127.0.0.1 to the new file.
+REM The following line copies only lines containing 127.0.0.1 to the new file
 sed -n "/127.0.0.1/p" RAW_Peter_Lowe.txt > Peter_Lowe.txt
 del RAW_Peter_Lowe.txt
 
-REM The folling line will remove line #1 from the following text file.
+REM The folling line will remove line #1 from the following text file
 sed "1d" RAW_CEDIA_Immortal_Domains.txt > Line_1_Removed_CEDIA_Immortal_Domains.txt
 del RAW_CEDIA_Immortal_Domains.txt
 
-REM The following line adds "0.0.0.0  " to the beginning of each line to the new file.
+REM The following line adds "0.0.0.0  " to the beginning of each line to the new file
 sed "s/^/0.0.0.0 /" Line_1_Removed_CEDIA_Immortal_Domains.txt > CEDIA_Immortal_Domains.txt
 del Line_1_Removed_CEDIA_Immortal_Domains.txt
 
@@ -35,17 +35,34 @@ copy *.txt ALL_HOSTS.txt
 echo.
 echo All .txt files successfully merged into ALL_HOSTS.txt
 
-REM Removing comments in ALL_HOSTS.txt
-sed -e "s/#.*$//;/^$/d" ALL_HOSTS.txt > HOSTS.txt
+REM Removes comments
+sed -e "s/#.*$//;/^$/d" ALL_HOSTS.txt > Comments_removed_HOSTS.txt
 
-REM Replacing all instances of 127.0.0.1 with 0.0.0.0
-sed -e "s+127.0.0.1+0.0.0.0+g" HOSTS.txt > HOSTS
+REM Replaces all instances of 127.0.0.1 with 0.0.0.0
+sed -e "s+127.0.0.1+0.0.0.0+g" Comments_removed_HOSTS.txt > IPs_replaced_HOSTS.txt
+
+REM Removes blank spaces at the end of lines
+sed "s/[[:space:]]*$//" IPs_replaced_HOSTS.txt > End_blanks_gone_HOSTS.txt
+
+REM Deletes duplicate lines
+awk "!x[$0]++" End_blanks_gone_HOSTS.txt > Duplicates_removed_HOSTS.txt
+
+REM Removes whitespace/indentations
+sed -e "s/^[ \t]*//" Duplicates_removed_HOSTS.txt > Whitespace_removed_HOSTS.txt
+
+REM Removes any remaing blank lines
+sed -e "/^$/d" Whitespace_removed_HOSTS.txt > HOSTS
+
 echo.
 echo Done
 
 REM Cleaning up unused .txt files
 del ALL_HOSTS.txt
-del HOSTS.txt
+del Comments_removed_HOSTS.txt
+del IPs_replaced_HOSTS.txt
+del End_blanks_gone_HOSTS.txt
+del Duplicates_removed_HOSTS.txt
+del Whitespace_removed_HOSTS.txt
 del CEDIA_Domains.txt
 del CEDIA_Immortal_Domains.txt
 del Dan_Pollock.txt
