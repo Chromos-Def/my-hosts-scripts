@@ -1,0 +1,11 @@
+0.0.0.0 aidps.atdmt.com
+0.0.0.0 c.atdmt.com
+0.0.0.0 cdn.atdmt.com
+0.0.0.0 db3aqu.atdmt.com
+0.0.0.0 ec.atdmt.com
+0.0.0.0 view.atdmt.com
+0.0.0.0 adnexus.net
+0.0.0.0 adnxs.com
+0.0.0.0 aka-cdn-ns.adtech.de
+0.0.0.0 www.viralurl.com
+0.0.0.0 viralurl.com
