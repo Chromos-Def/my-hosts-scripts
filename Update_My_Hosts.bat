@@ -29,17 +29,17 @@ del Line_1_Removed_CEDIA_Immortal_Domains.txt
 echo.
 
 REM Merges all .txt files into ALL_HOSTS.txt
-echo Merging all .txt files into a single file name0+d ALL_HOSTS.txt
+echo Merging all .txt files into a single file
 echo.
 copy *.txt ALL_HOSTS.txt
 echo.
-echo All .txt files successfully merged into ALL_HOSTS.txt
+echo All .txt files successfully merged
 
 REM Removes comments
-sed -e "s/#.*$//;/^$/d" ALL_HOSTS.txt > Comments_removed_HOSTS.txt
+sed "s/#.*$//;/^$/d" ALL_HOSTS.txt > Comments_removed_HOSTS.txt
 
 REM Replaces all instances of 127.0.0.1 with 0.0.0.0
-sed -e "s+127.0.0.1+0.0.0.0+g" Comments_removed_HOSTS.txt > IPs_replaced_HOSTS.txt
+sed "s+127.0.0.1+0.0.0.0+g" Comments_removed_HOSTS.txt > IPs_replaced_HOSTS.txt
 
 REM Removes blank spaces at the end of lines
 sed "s/[[:space:]]*$//" IPs_replaced_HOSTS.txt > End_blanks_gone_HOSTS.txt
@@ -48,15 +48,15 @@ REM Deletes duplicate lines
 awk "!x[$0]++" End_blanks_gone_HOSTS.txt > Duplicates_removed_HOSTS.txt
 
 REM Removes whitespace/indentations
-sed -e "s/^[ \t]*//" Duplicates_removed_HOSTS.txt > Whitespace_removed_HOSTS.txt
+sed "s/^[ \t]*//" Duplicates_removed_HOSTS.txt > Whitespace_removed_HOSTS.txt
 
 REM Removes any remaing blank lines
-sed -e "/^$/d" Whitespace_removed_HOSTS.txt > HOSTS
+sed "/^$/d" Whitespace_removed_HOSTS.txt > HOSTS
 
 echo.
 echo Done
 
-REM Cleaning up unused .txt files
+REM Clean up of unused .txt files
 del ALL_HOSTS.txt
 del Comments_removed_HOSTS.txt
 del IPs_replaced_HOSTS.txt
