@@ -27,19 +27,24 @@ sed "s/^/0.0.0.0 /" Line_1_Removed_CEDIA_Immortal_Domains.txt > CEDIA_Immortal_D
 del Line_1_Removed_CEDIA_Immortal_Domains.txt
 
 echo.
-REM Combines all host .txt files and then outputs them into HOSTS.txt
-echo Combining all host .txt files into a single file named HOSTS.txt
+
+REM Merges all .txt files into ALL_HOSTS.txt
+echo Merging all .txt files into a single file name0+d ALL_HOSTS.txt
 echo.
-copy *.txt HOSTS.txt
+copy *.txt ALL_HOSTS.txt
 echo.
-echo All files successfully copied to HOSTS.txt
-echo.
-echo Replacing all instances of 127.0.0.1 with 0.0.0.0
-sed -e "s/127.0.0.1/0.0.0.0/g" HOSTS.txt > HOSTS
+echo All .txt files successfully merged into ALL_HOSTS.txt
+
+REM Removing comments in ALL_HOSTS.txt
+sed -e "s/#.*$//;/^$/d" ALL_HOSTS.txt > HOSTS.txt
+
+REM Replacing all instances of 127.0.0.1 with 0.0.0.0
+sed -e "s+127.0.0.1+0.0.0.0+g" HOSTS.txt > HOSTS
 echo.
 echo Done
 
 REM Cleaning up unused .txt files
+del ALL_HOSTS.txt
 del HOSTS.txt
 del CEDIA_Domains.txt
 del CEDIA_Immortal_Domains.txt
