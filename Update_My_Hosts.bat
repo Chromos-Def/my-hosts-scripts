@@ -8,6 +8,9 @@ powershell -Command "Invoke-WebRequest https://www.malwaredomainlist.com/hostsli
 powershell -Command "Invoke-WebRequest https://winhelp2002.mvps.org/hosts.txt -OutFile MVPS.txt"
 powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/hosts.txt -OutFile NoCoin.txt"
 powershell -Command "Invoke-WebRequest https://pgl.yoyo.org/adservers/serverlist.php?showintro=0 -OutFile RAW_Peter_Lowe.txt"
+powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/Block-Redshell-Hosts.txt -OutFile Block-Redshell-Hosts.txt"
+powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/MyCustomHosts.txt -OutFile MyCustomHosts.txt"
+powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/RW_DOMBL.txt -OutFile RW_DOMBL.txt"
 echo.
 echo Updates are done downloading
 
@@ -24,14 +27,20 @@ sed "s/^/0.0.0.0 /" Line_1_Removed_CEDIA_Immortal_Domains.txt > CEDIA_Immortal_D
 del Line_1_Removed_CEDIA_Immortal_Domains.txt
 
 echo.
-REM Combines all host .txt files and then outputs them into HOSTS
-echo Combining all host .txt files
+REM Combines all host .txt files and then outputs them into HOSTS.txt
+echo Combining all host .txt files into a single file named HOSTS.txt
 echo.
-copy *.txt HOSTS
+copy *.txt HOSTS.txt
 echo.
-echo All files successfully copied to HOSTS
+echo All files successfully copied to HOSTS.txt
+echo.
+echo Replacing all instances of 127.0.0.1 with 0.0.0.0
+sed -e "s/127.0.0.1/0.0.0.0/g" HOSTS.txt > HOSTS
+echo.
+echo Done
 
 REM Cleaning up unused .txt files
+del HOSTS.txt
 del CEDIA_Domains.txt
 del CEDIA_Immortal_Domains.txt
 del Dan_Pollock.txt
@@ -39,6 +48,9 @@ del Malware_Domain_List.txt
 del MVPS.txt
 del NoCoin.txt
 del Peter_Lowe.txt
+del Block-Redshell-Hosts.txt
+del MyCustomHosts.txt
+del RW_DOMBL.txt
 
 echo.
 
