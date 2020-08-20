@@ -28,9 +28,3 @@ https://pgl.yoyo.org/adservers/serverlist.php?showintro=0
 https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/Block-Redshell-Hosts.txt
 
 https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/MyCustomHosts.txt
-
-https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/RW_DOMBL.txt
-
-https://gitlab.com/curben/urlhaus-filter/raw/master/urlhaus-filter-hosts.txt
-
-https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt
