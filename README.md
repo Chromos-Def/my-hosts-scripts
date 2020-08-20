@@ -1,9 +1,10 @@
 # my-hosts-scripts
 My hosts script
 
-# How to used
-The script will update from the sources I listed below and combine all of them into a single file named **HOSTS**
-You will need to manually drag this file into the proper location and that location is the *etc* directory in **C:\Windows\System32\drivers\etc**
+# How to use
+- The script will update from the sources I listed below and combine all of them into a single file named **HOSTS**.
+- You will need to manually drag this file into the proper directory for now.
+     - That directory being **C:\Windows\System32\drivers\etc**
 
 # TO DO
 - Write up a better README
