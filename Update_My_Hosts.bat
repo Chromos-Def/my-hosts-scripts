@@ -11,6 +11,8 @@ powershell -Command "Invoke-WebRequest https://pgl.yoyo.org/adservers/serverlist
 powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/Block-Redshell-Hosts.txt -OutFile Block-Redshell-Hosts.txt"
 powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/MyCustomHosts.txt -OutFile MyCustomHosts.txt"
 powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/RW_DOMBL.txt -OutFile RW_DOMBL.txt"
+powershell -Command "Invoke-WebRequest https://gitlab.com/curben/urlhaus-filter/raw/master/urlhaus-filter-hosts.txt -OutFile URLhaus_Malicious_Blocklist.txt
+powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt -OutFile RAW_Spam404_main_blacklist.txt
 echo.
 echo Updates are done downloading
 
@@ -22,9 +24,12 @@ REM The folling line will remove line #1 from the following text file
 sed "1d" RAW_CEDIA_Immortal_Domains.txt > Line_1_Removed_CEDIA_Immortal_Domains.txt
 del RAW_CEDIA_Immortal_Domains.txt
 
-REM The following line adds "0.0.0.0  " to the beginning of each line to the new file
+REM The following lines add "0.0.0.0  " to the beginning of each line to the new files
 sed "s/^/0.0.0.0 /" Line_1_Removed_CEDIA_Immortal_Domains.txt > CEDIA_Immortal_Domains.txt
 del Line_1_Removed_CEDIA_Immortal_Domains.txt
+
+sed "s/^/0.0.0.0 /" RAW_Spam404_main_blacklist.txt > Spam404_main_blacklist.txt
+del RAW_Spam404_main_blacklist.txt
 
 echo.
 
@@ -73,6 +78,10 @@ del Peter_Lowe.txt
 del Block-Redshell-Hosts.txt
 del MyCustomHosts.txt
 del RW_DOMBL.txt
+del URLhaus_Malicious_Blocklist.txt
+del Spam404_main_blacklist.txt
+
+ipconfig /flushdns
 
 echo.
 
