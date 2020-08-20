@@ -6,6 +6,7 @@ My hosts script
 - You will need to manually drag the **HOSTS** file into the proper directory.
      - That directory being **C:\Windows\System32\drivers\etc**
 
+- Recommended to apply **DNS_Cache_Tweak.reg** if you **do not** disable your *DNS Client* service.
 # TO DO
 - Write up a better README
 - Have the script install the HOSTS file into the proper location
