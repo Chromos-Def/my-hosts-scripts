@@ -47,7 +47,8 @@ REM Removes comments
 sed "s/#.*$//;/^$/d" ALL_HOSTS.txt > Comments_removed_HOSTS.txt
 
 REM Replaces all instances of 127.0.0.1 with 0.0.0.0
-sed "s+127.0.0.1+0.0.0.0+g" Comments_removed_HOSTS.txt > IPs_replaced_HOSTS.txt
+sed "s+127.0.0.1  +0.0.0.0 +g" Comments_removed_HOSTS.txt > Step_1_IPs_replaced_HOSTS.txt
+sed "s+127.0.0.1+0.0.0.0+g" Step_1_IPs_replaced_HOSTS.txt > IPs_replaced_HOSTS.txt
 
 REM Removes blank spaces at the end of lines
 sed "s/[[:space:]]*$//" IPs_replaced_HOSTS.txt > End_blanks_gone_HOSTS.txt
@@ -64,6 +65,7 @@ sed "/^$/d" Whitespace_removed_HOSTS.txt > HOSTS
 REM Clean up of unused .txt files
 del ALL_HOSTS.txt
 del Comments_removed_HOSTS.txt
+del Step_1_IPs_replaced_HOSTS.txt
 del IPs_replaced_HOSTS.txt
 del End_blanks_gone_HOSTS.txt
 del Duplicates_removed_HOSTS.txt
