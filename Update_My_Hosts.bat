@@ -1,18 +1,18 @@
 @echo off
 
 echo Downloading updates....please standby.
-powershell -Command "Invoke-WebRequest https://mirror.cedia.org.ec/malwaredomains/justdomains -OutFile RAW_CEDIA_Domains.txt"
-powershell -Command "Invoke-WebRequest https://mirror.cedia.org.ec/malwaredomains/immortal_domains.txt -OutFile RAW_CEDIA_Immortal_Domains.txt"
+powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/MyCustomHosts.txt -OutFile MyCustomHosts.txt"
+powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/Block-Redshell-Hosts.txt -OutFile Block-Redshell-Hosts.txt"
 powershell -Command "Invoke-WebRequest https://someonewhocares.org/hosts/zero/hosts -OutFile Dan_Pollock.txt"
 powershell -Command "Invoke-WebRequest https://www.malwaredomainlist.com/hostslist/hosts.txt -OutFile Malware_Domain_List.txt"
 powershell -Command "Invoke-WebRequest https://winhelp2002.mvps.org/hosts.txt -OutFile MVPS.txt"
 powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/hosts.txt -OutFile NoCoin.txt"
 powershell -Command "Invoke-WebRequest https://pgl.yoyo.org/adservers/serverlist.php?showintro=0 -OutFile RAW_Peter_Lowe.txt"
-powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/Block-Redshell-Hosts.txt -OutFile Block-Redshell-Hosts.txt"
-powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/MyCustomHosts.txt -OutFile MyCustomHosts.txt"
-REM powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/RW_DOMBL.txt -OutFile RW_DOMBL.txt"
-REM powershell -Command "Invoke-WebRequest https://gitlab.com/curben/urlhaus-filter/raw/master/urlhaus-filter-hosts.txt -OutFile URLhaus_Malicious_Blocklist.txt
+powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts -OutFile 207Net.txt
+powershell -Command "Invoke-WebRequest https://gitlab.com/curben/urlhaus-filter/raw/master/urlhaus-filter-hosts-online.txt -OutFile URLhaus_Online_Malicious_Blocklist.txt
 REM powershell -Command "Invoke-WebRequest https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt -OutFile RAW_Spam404_main_blacklist.txt
+REM powershell -Command "Invoke-WebRequest https://mirror.cedia.org.ec/malwaredomains/justdomains -OutFile RAW_CEDIA_Domains.txt"
+REM powershell -Command "Invoke-WebRequest https://mirror.cedia.org.ec/malwaredomains/immortal_domains.txt -OutFile RAW_CEDIA_Immortal_Domains.txt"
 echo.
 echo Updates are done downloading.
 
@@ -21,15 +21,15 @@ sed -n "/127.0.0.1/p" RAW_Peter_Lowe.txt > Peter_Lowe.txt
 del RAW_Peter_Lowe.txt
 
 REM The folling line will remove line #1 from the following text file
-sed "1d" RAW_CEDIA_Immortal_Domains.txt > Line_1_Removed_CEDIA_Immortal_Domains.txt
-del RAW_CEDIA_Immortal_Domains.txt
+REM sed "1d" RAW_CEDIA_Immortal_Domains.txt > Line_1_Removed_CEDIA_Immortal_Domains.txt
+REM del RAW_CEDIA_Immortal_Domains.txt
 
 REM The following lines add "0.0.0.0  " to the beginning of each line to the new files
-sed "s/^/0.0.0.0 /" Line_1_Removed_CEDIA_Immortal_Domains.txt > CEDIA_Immortal_Domains.txt
-del Line_1_Removed_CEDIA_Immortal_Domains.txt
+REM sed "s/^/0.0.0.0 /" Line_1_Removed_CEDIA_Immortal_Domains.txt > CEDIA_Immortal_Domains.txt
+REM del Line_1_Removed_CEDIA_Immortal_Domains.txt
 
-sed "s/^/0.0.0.0 /" RAW_CEDIA_Domains.txt > CEDIA_Domains.txt
-del RAW_CEDIA_Domains.txt
+REM sed "s/^/0.0.0.0 /" RAW_CEDIA_Domains.txt > CEDIA_Domains.txt
+REM del RAW_CEDIA_Domains.txt
 
 REM sed "s/^/0.0.0.0 /" RAW_Spam404_main_blacklist.txt > Spam404_main_blacklist.txt
 REM del RAW_Spam404_main_blacklist.txt
@@ -70,18 +70,18 @@ del IPs_replaced_HOSTS.txt
 del End_blanks_gone_HOSTS.txt
 del Duplicates_removed_HOSTS.txt
 del Whitespace_removed_HOSTS.txt
-del CEDIA_Domains.txt
-del CEDIA_Immortal_Domains.txt
+del MyCustomHosts.txt
+del Block-Redshell-Hosts.txt
 del Dan_Pollock.txt
 del Malware_Domain_List.txt
 del MVPS.txt
 del NoCoin.txt
 del Peter_Lowe.txt
-del Block-Redshell-Hosts.txt
-del MyCustomHosts.txt
-REM del RW_DOMBL.txt
-REM del URLhaus_Malicious_Blocklist.txt
+del 207Net.txt
+del URLhaus_Online_Malicious_Blocklist.txt
 REM del Spam404_main_blacklist.txt
+REM RAW_CEDIA_Domains.txt
+REM RAW_CEDIA_Immortal_Domains.txt
 
 ipconfig /flushdns
 

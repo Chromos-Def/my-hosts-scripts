@@ -7,13 +7,13 @@ My hosts script
      - That directory being **C:\Windows\System32\drivers\etc**
 - Recommended to apply **DNS_Cache_Tweak.reg** if you **do not** disable your *DNS Client* service.
 # TO DO
-- Write up a better README
 - Have the script install the HOSTS file into the proper location
+- Write up a better README
 
 # Sources used
-https://mirror.cedia.org.ec/malwaredomains/domains.hosts
+https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/MyCustomHosts.txt
 
-https://mirror.cedia.org.ec/malwaredomains/immortal_domains.txt
+https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/Block-Redshell-Hosts.txt
 
 https://someonewhocares.org/hosts/zero/hosts
 
@@ -25,6 +25,6 @@ https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/hosts.txt
 
 https://pgl.yoyo.org/adservers/serverlist.php?showintro=0
 
-https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/Block-Redshell-Hosts.txt
+https://raw.githubusercontent.com/FadeMind/hosts.extras/master/add.2o7Net/hosts
 
-https://raw.githubusercontent.com/Chromos-Def/my-hosts-scripts/master/Persistent/MyCustomHosts.txt
+https://gitlab.com/curben/urlhaus-filter/raw/master/urlhaus-filter-hosts-online.txt
